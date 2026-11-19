@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+:root {
+  /* Core Surfaces (Dark Mode Default) */
+  --bg-app: #0b0f17;
+  --bg-surface: #121826;
+  --bg-elevated: #192234;
+  --bg-input: #0e1420;
+
+  /* Borders & Dividers */
+  --border-subtle: rgba(148, 163, 184, 0.14);
+  --border-focus: #6366f1;
+
+  /* Text Colors */
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+
+  /* ChatFlow Brand & Chat Bubble Accents */
+  --accent-primary: #6366f1;       /* Indigo */
+  --accent-primary-hover: #4f46e5;
+  --accent-secondary: #22d3ee;     /* Cyan highlight */
+  --bubble-outgoing: #4f46e5;
+  --bubble-incoming: #1e293b;
+
+  /* Status Colors */
+  --status-online: #10b981;
+  --status-error: #f43f5e;
+  --status-warning: #f59e0b;
+
+  /* Fonts */
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+@layer base {
+  body {
+    background-color: var(--bg-app);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  code, pre, .font-mono {
+    font-family: var(--font-mono);
+  }
+}
+
+/* Fix Chrome/Edge Autofill white background in Dark Mode */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px var(--bg-input) inset !important;
+  -webkit-text-fill-color: var(--text-primary) !important;
+  caret-color: var(--text-primary) !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
