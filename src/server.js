@@ -16,7 +16,7 @@ app.use("/api/auth", authRouter)
 app.use("/api/user", userRouter)
 
 const __dirname = path.resolve();//D:\shariq\saylani-batch-18\react-with-server\ecom-without-db
-const __frontend = path.join(__dirname, './Web/dist')//D:\shariq\saylani-batch-18\react-with-server\ecom-without-db\web\build
+const __frontend = path.join(__dirname, '.routes./Web/dist')//D:\shariq\saylani-batch-18\react-with-server\ecom-without-db\web\build
 app.use('/', express.static(__frontend))
 app.use("/*splat", express.static(__frontend))
 

@@ -14,8 +14,8 @@ import { setUserData } from "../redux/userSlice";
 
 export default function Login() {
   let dispatch = useDispatch()
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("hashirdev68@gmail.com");
+  const [password, setPassword] = useState("123456");
 
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(true);
@@ -23,7 +23,6 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
 
   const { userData } = useSelector(state=>state.user)
-  console.log(userData);
   
   const navigate = useNavigate()
 
@@ -41,7 +40,7 @@ export default function Login() {
       // Yahan apni login API call lagayein
       let result = await api.post(`/auth/login`, { password, email })
       dispatch(setUserData(result.data))
-      navigate("/dashboard")
+      navigate("/")
     } catch (err) {
       console.log(err);
       

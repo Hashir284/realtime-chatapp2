@@ -52,7 +52,7 @@ export default function Signup() {
             // Yahan apni signup API call lagayein
             let result = await api.post(`/auth/signup`, { password, userName: username, email })
             dispatch(setUserData(result.data))
-            navigate("/dashboard")
+            navigate("/")
         } catch (err) {
             setError(err?.response?.data?.message || "Could not create account.");
         } finally {
