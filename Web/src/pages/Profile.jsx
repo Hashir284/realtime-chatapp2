@@ -13,7 +13,7 @@ import api from '../Api/api'
 import { setUserData } from '../redux/userSlice'
 
 const Profile = () => {
-    
+
     const navigate = useNavigate()
     const { userData } = useSelector((state) => state.user)
     const [name, setName] = useState(userData?.name || '')
@@ -40,12 +40,12 @@ const Profile = () => {
         try {
             setSaving(true)
             let formData = new FormData()
-            if(name) formData.append("name", name)
-            if(backendImage) formData.append("image", backendImage)
+            if (name) formData.append("name", name)
+            if (backendImage) formData.append("image", backendImage)
             let result = await api.put("/user/profile", formData)
-        dispatch(setUserData(result.data))
+            dispatch(setUserData(result.data))
         } catch (error) {
-            console.log(error.response.data)            
+            console.log(error.response.data)
         } finally {
             setSaving(false)
         }
@@ -150,9 +150,9 @@ const Profile = () => {
                             <input
                                 type="text"
                                 value={userName}
-                                disabled={true}
+                                readOnly
                                 placeholder="username"
-                                className="w-full bg-[var(--bg-input)] text-[var(--text-primary)] placeholder-[var(--text-muted)] text-sm rounded-xl pl-10 pr-3.5 py-2.5 border border-[var(--border-subtle)] focus:outline-none focus:border-[var(--border-focus)] transition shadow-inner"
+                                className="w-full text-[var(--input-disable-text)]  bg-[var(--bg-input)] placeholder-[var(--text-muted)] text-sm rounded-xl pl-10 pr-3.5 py-2.5 border border-[var(--border-subtle)] focus:outline-none focus:border-[var(--border-focus)] transition shadow-inner"
                             />
                         </div>
                     </div>
@@ -167,9 +167,9 @@ const Profile = () => {
                             <input
                                 type="email"
                                 value={email}
-                                disabled={true}
+                                readOnly
                                 placeholder="you@example.com"
-                                className="w-full bg-[var(--bg-input)] text-[var(--text-primary)] placeholder-[var(--text-muted)] text-sm rounded-xl pl-10 pr-3.5 py-2.5 border border-[var(--border-subtle)] focus:outline-none focus:border-[var(--border-focus)] transition shadow-inner"
+                                className="w-full text-[var(--input-disable-text)] bg-[var(--bg-input)] placeholder-[var(--text-muted)] text-sm rounded-xl pl-10 pr-3.5 py-2.5 border border-[var(--border-subtle)] focus:outline-none focus:border-[var(--border-focus)] transition shadow-inner"
                             />
                         </div>
                     </div>
@@ -182,7 +182,7 @@ const Profile = () => {
                         onClick={handleSaveProfile}
                     >
                         <FiCheckCircle className="w-4 h-4" />
-                        <span>{saving? "Saving..." : "Save Profile"}</span>
+                        <span>{saving ? "Saving..." : "Save Profile"}</span>
                     </button>
                 </form>
             </section>

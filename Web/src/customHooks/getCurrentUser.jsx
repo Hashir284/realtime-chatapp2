@@ -6,15 +6,16 @@ import { setUserData } from "../redux/userSlice"
 const getCurrentUser = () => {
     let dispatch = useDispatch()
     const userData = useSelector(state => state.user.userData)
-    useEffect(()=>{
-        const fetchUser = async ()=>{
-             try {
-                let result = await api.get('/user/current')
-                dispatch(setUserData(result.data))
-                // console.log("Get Current User", result.data);       
-             } catch (error) {      
+    useEffect(() => {
+        const fetchUser = async () => {
+            let result
+            try {
+                result = await api.get('/user/current')
+                dispatch(setUserData(result?.data))
+            } catch (error) {
                 console.log(error.response.data);
-             }
+                dispatch(setUserData(null))
+            }
         }
         fetchUser()
     }, [userData])
